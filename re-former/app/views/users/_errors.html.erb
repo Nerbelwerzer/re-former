@@ -1,0 +1,12 @@
+<h1> errors </h1>
+<% if @user.errors.any? %>
+    <div>
+        <h2><%= pluralize(@user.errors.count, "error") %>
+        prohibited this user </h2>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

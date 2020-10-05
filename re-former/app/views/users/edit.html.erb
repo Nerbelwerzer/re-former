@@ -1,0 +1,41 @@
+<!--
+
+
+
+<h2>form_for form</h2>
+<p>You need to go into controllers and change the helper method to accept the nested hash</p>
+<%= form_for @user do |f| %>
+   
+    <%= label(:username, "Username: ") %>
+    <%= f.text_field :username %><br/>
+    <%= label(:email, "Email: ") %>
+    <%= f.text_field :email %><br/>
+    <%= label(:password,"Password: ") %>
+    <%= f.password_field :password %><br/>
+    <%= f.submit "submit" %>
+<% end %>
+<h2>form_tag form</h2>
+
+<%= form_tag(user_path, method: 'patch' ) do %>
+    <%= label_tag 'username' %>
+    <%= text_field_tag(:username) %><br/>
+    <%= label_tag 'email' %>
+    <%= text_field_tag(:email) %><br/>
+    <%= label_tag 'password' %>
+    <%= password_field_tag 'password' %><br/>
+    <%= submit_tag 'Submit'%>
+<% end %>
+-->
+<h2> Html Form </h2>
+<form method="post"action="/users/<%=@user.id%>" accept-charset="UTF-8">
+ <input name="_method" type="hidden" value="patch"/>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="username">Username:</label>
+    <input type="text" name="username" ><br/>
+    <label for="email">Email:</label>
+    <input type="email" name="email" ><br/>
+    <label for="password">Password:</label>
+    <input type="password" name="password" ><br/>
+    <button type="submit">Submit</button>
+</form>
+<%= render "errors" %>
